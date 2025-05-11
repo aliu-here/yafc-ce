@@ -15,7 +15,7 @@ public class ProductionTableView : ProjectPageView<ProductionTable> {
 
     public ProductionTableView() {
         DataGrid<RecipeRow> grid = new DataGrid<RecipeRow>(new RecipePadColumn(this), new RecipeColumn(this), new EntityColumn(this),
-            new IngredientsColumn(this), new ProductsColumn(this), new ModulesColumn(this));
+            new IngredientsColumn(this), new ProductsColumn(this), new ModulesColumn(this), new ConstructedColumn(this));
 
         flatHierarchyBuilder = new FlatHierarchy<RecipeRow, ProductionTable>(grid, BuildSummary,
             LSs.ProductionTableNestedGroup);
@@ -808,6 +808,14 @@ goodsHaveNoProduction:;
             if (gui.BuildButton(LSs.ProductionTableModuleSettings) && gui.CloseDropdown()) {
                 ModuleFillerParametersScreen.Show(model.modules!);
             }
+        }
+    }
+
+    private class ConstructedColumn(ProductionTableView view) : ProductionTableDataColumn(view, "Is constructed?", 32f, 32f, 32f, hasMenu: false) {
+        public override void BuildElement(ImGui gui, RecipeRow row) {
+            bool discard;
+            gui.BuildCheckBox("", row.recipeConstructed, out discard);
+            row.recipeConstructed = discard;
         }
     }
 

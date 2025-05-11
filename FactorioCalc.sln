@@ -1,8 +1,9 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yafc.I18n.Generator", "Yafc.I18n.Generator\Yafc.I18n.Generator.csproj", "{E8A28A02-99C4-41D3-99E3-E6252BD116B7}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yafc", "Yafc\Yafc.csproj", "{73EBA162-A3BE-43CC-9B55-CA16332F439D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yafc.UI", "Yafc.UI\Yafc.UI.csproj", "{70F74D2B-9747-4185-B369-64F77BC8D0D5}"
@@ -27,8 +28,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yafc.I18n", "Yafc.I18n\Yafc
 	ProjectSection(ProjectDependencies) = postProject
 		{E8A28A02-99C4-41D3-99E3-E6252BD116B7} = {E8A28A02-99C4-41D3-99E3-E6252BD116B7}
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yafc.I18n.Generator", "Yafc.I18n.Generator\Yafc.I18n.Generator.csproj", "{E8A28A02-99C4-41D3-99E3-E6252BD116B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
