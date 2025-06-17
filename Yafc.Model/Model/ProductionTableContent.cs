@@ -311,6 +311,7 @@ public class RecipeRow : ModelObject<ProductionTable>, IGroupedElement<Productio
     private IObjectWithQuality<Goods>? _fixedProduct;
     private ModuleTemplate? _modules;
 
+    public bool recipeConstructed; 
     public IObjectWithQuality<RecipeOrTechnology> recipe { get; }
     // Variable parameters
     public IObjectWithQuality<EntityCrafter>? entity {

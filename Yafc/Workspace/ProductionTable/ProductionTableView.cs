@@ -15,18 +15,23 @@ public class ProductionTableView : ProjectPageView<ProductionTable> {
 
     public ProductionTableView() {
         DataGrid<RecipeRow> grid = new DataGrid<RecipeRow>(new RecipePadColumn(this), new RecipeColumn(this), new EntityColumn(this),
-            new IngredientsColumn(this), new ProductsColumn(this), new ModulesColumn(this));
+            new IngredientsColumn(this), new ProductsColumn(this), new ModulesColumn(this), new ConstructedColumn(this));
 
         flatHierarchyBuilder = new FlatHierarchy<RecipeRow, ProductionTable>(grid, BuildSummary,
             LSs.ProductionTableNestedGroup);
     }
-
     /// <param name="widthStorage">If not <see langword="null"/>, names an instance property in <see cref="Preferences"/> that will be used to store the width of this column.
     /// If the current value of the property is out of range, the initial width will be <paramref name="initialWidth"/>.</param>
     private abstract class ProductionTableDataColumn(ProductionTableView view, string header, float initialWidth, float minWidth = 0, float maxWidth = 0, bool hasMenu = true, string? widthStorage = null)
         : TextDataColumn<RecipeRow>(header, initialWidth, minWidth, maxWidth, hasMenu, widthStorage) {
 
         protected readonly ProductionTableView view = view;
+    }
+
+    private class ConstructedColumn(ProductionTableView view) : ProductionTableDataColumn(view, "Constructed?", 0.0f, hasMenu: false) {
+        public override void BuildElement(ImGui gui, RecipeRow row) {
+            gui.BuildCheckBox("", row.recipeConstructed, out row.recipeConstructed);
+        }
     }
 
     private class RecipePadColumn(ProductionTableView view) : ProductionTableDataColumn(view, "", 3f, hasMenu: false) {
